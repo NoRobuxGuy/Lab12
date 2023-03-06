@@ -11,23 +11,23 @@
         
         <!-- (1): CREATE Task -->         
         <!-- --> 
-        <form action="/Toys" method="POST">   
+        <form action="/quotes" method="POST">   
             <input type="text" placeholder="name" name="name" />        
-            <input type="text" placeholder="description" name="description" />
+            <input type="text" placeholder="description" name="quote" />
             <button type="submit">Submit</button>
         </form>
         <!-- -->                               
 
         <!-- (2) READ Task -->                        
         <h2> READ: All Toys in The Toy Box </h2>
-        <ul class="Toys">
+        <ul class="quotes">
             <!-- Loop through quotes -->
-            <% for(var i = 0; i < Toys.length; i++) {%>
-                <li class="Toys">
+            <% for(var i = 0; i < quotes.length; i++) {%>
+                <li class="quote">
                     <!-- Output name from the iterated quote object -->
-                    <span><%= Toys[i].name %></span>:
+                    <span><%= quotes[i].name %></span>:
                     <!-- Output quote from the iterated quote object -->
-                    <span><%= Toys[i].description %></span>
+                    <span><%= quotes[i].quote %></span>
                 </li>
             <% } %>
         </ul>    

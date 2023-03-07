@@ -19,7 +19,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         const db = client.db('star-wars-quotes')
         const quotesCollection = db.collection('quotes')
         
-        // To tell Express to EJS as the template engine
+        // Tell Express to EJS as the template engine
         app.set('view engine', 'ejs') 
         
         // Make sure you place body-parser before your CRUD handlers!

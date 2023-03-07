@@ -25,12 +25,12 @@
             <!-- Loop through toys -->
             <% for(var i = 0; i < toys.length; i++) {%>
                 <li class="toy">
-                    <!-- Output name from the iterated quote object -->
+                    <!-- Output name from the iterated toys object -->
                     <span><%= toys[i].name %></span>:
-                    <!-- Output description from the iterated quote object -->
+                    <!-- Output description from the iterated toys object -->
                     <span><%= toys[i].description %></span>
-                     <!-- Output price from the iterated quote object -->
-                    <span><%= toys[i].price %></span>
+                     <!-- Output price from the iterated toys object -->
+                    <br><span><%= toys[i].price %></span>
                 </li>
             <% } %>
         </ul>    

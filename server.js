@@ -14,10 +14,10 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
     .then(client => {
         console.log('Connected to Database')
         
-        // (1a) CREATE: client -> create -> database -> 'star-wars-quotes'
-        // -> create -> collection -> 'quotes'
-        const db = client.db('star-wars-quotes')
-        const quotesCollection = db.collection('quotes')
+        // (1a) CREATE: client -> create -> database -> 'atn-toys'
+        // -> create -> collection -> 'toys'
+        const db = client.db('atn-toys')
+        const toysCollection = db.collection('toys')
         
         // Tell Express to EJS as the template engine
         app.set('view engine', 'ejs') 
@@ -32,10 +32,10 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
         app.use(bodyParser.json())
 
         // (2) READ: client -> browser -> url 
-        // -> server -> '/' -> collection -> 'quotes' -> find() 
+        // -> server -> '/' -> collection -> 'toys' -> find() 
         // -> results -> index.ejs -> client
         app.get('/', (req, res) => {
-            db.collection('quotes').find().toArray()
+            db.collection('toys').find().toArray()
                 .then(results => {
 
                     // results -> server -> console
@@ -43,15 +43,15 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
                     
                     // results -> index.ejs -> client -> browser 
                     // The file 'index.ejs' must be placed inside a 'views' folder BY DEFAULT
-                    res.render('index.ejs', { quotes: results })
+                    res.render('index.ejs', { toys: results })
                 })
                 .catch(/* ... */)
         })
 
         // (1b) CREATE: client -> index.ejs -> data -> SUBMIT 
-        // -> post -> '/quotes' -> collection -> insert -> result
-        app.post('/quotes', (req, res) => {
-            quotesCollection.insertOne(req.body)
+        // -> post -> '/toys' -> collection -> insert -> result
+        app.post('/toys', (req, res) => {
+            toysCollection.insertOne(req.body)
             .then(result => {
                 
                 // results -> server -> console
